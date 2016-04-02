@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>d_error.c</itemPath>
+      <itemPath>d_error.h</itemPath>
+      <itemPath>d_img.c</itemPath>
+      <itemPath>d_img.h</itemPath>
+      <itemPath>d_lib.h</itemPath>
+      <itemPath>d_list.c</itemPath>
+      <itemPath>d_list.h</itemPath>
+      <itemPath>d_logger.c</itemPath>
+      <itemPath>d_logger.h</itemPath>
+      <itemPath>d_memory.c</itemPath>
+      <itemPath>d_memory.h</itemPath>
+      <itemPath>d_ml.c</itemPath>
+      <itemPath>d_ml.h</itemPath>
+      <itemPath>d_socket.c</itemPath>
+      <itemPath>d_socket.h</itemPath>
+      <itemPath>d_string.c</itemPath>
+      <itemPath>d_string.h</itemPath>
+      <itemPath>d_thread.h</itemPath>
+      <itemPath>d_time.c</itemPath>
+      <itemPath>d_time.h</itemPath>
+      <itemPath>d_tools.c</itemPath>
+      <itemPath>d_tools.h</itemPath>
+      <itemPath>d_types.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <standard>10</standard>
+          <preprocessorList>
+            <Elem>_POSIX_C_SOURCE = 199309L</Elem>
+          </preprocessorList>
+        </cTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="d_error.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_img.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_img.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_lib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_list.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_list.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_logger.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_memory.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_ml.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_ml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_socket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_socket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_string.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_string.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_time.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_time.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_tools.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_tools.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_types.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <standard>10</standard>
+          <preprocessorList>
+            <Elem>199309L</Elem>
+            <Elem>=</Elem>
+            <Elem>_POSIX_C_SOURCE</Elem>
+          </preprocessorList>
+          <useLinkerLibraries>false</useLinkerLibraries>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="d_error.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_img.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_img.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_lib.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_list.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_list.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_logger.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_logger.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_memory.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_memory.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_ml.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_ml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_socket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_socket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_string.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_string.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_thread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_time.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_time.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_tools.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="d_tools.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="d_types.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
