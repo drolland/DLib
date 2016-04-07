@@ -2,10 +2,27 @@
 #include "d_memory.h"
 
 #include <sys/types.h>
+
+#ifndef __WIN32__
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
+#define SOCKET_ERROR -1
+
+#else
+
+
+#include <winsock2.h>
+#include <ws2tcpip.h>
+
+#define SHUT_RDWR SD_BOTH
+
+
+#pragma comment(lib, "Ws2_32.lib")
+
+#endif
+
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
@@ -20,6 +37,7 @@ typedef struct _d_socket {
     
 } DSocket;
 
+/* TODO Errocr checking for Windows WSA function */
 DSocket* d_socket_connect_by_ip(char* ip,int port,DError** error) {
 
     
@@ -43,25 +61,18 @@ DSocket* d_socket_connect_by_ip(char* ip,int port,DError** error) {
     setsockopt(new_socket->socket_desc, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int);
 */
     
-    if ( new_socket->socket_desc == -1){
+    if ( new_socket->socket_desc == SOCKET_ERROR){
         if ( error)
             *error = DERROR("Cant create socket, %s",strerror(errno));
         goto error;
     }
     
-    if( connect(new_socket->socket_desc, (const struct sockaddr*)&sock_adress, sizeof(sock_adress)) == -1){
+    if( connect(new_socket->socket_desc, (const struct sockaddr*)&sock_adress, sizeof(sock_adress)) == SOCKET_ERROR){
         if ( error )
-            *error = DERROR("Connection to %s:%d failed",ip,port);
+            *error = DERROR("Connection to %s:%d failed, %s",ip,port,strerror(errno));
         goto error;
     }
     
-/*
-    struct linger so_linger;
-    so_linger.l_onoff = TRUE;
-    so_linger.l_linger = 30;
-    setsockopt(new_socket->socket_desc,SOL_SOCKET,SO_LINGER,&so_linger,sizeof(so_linger));
-*/
-
     return new_socket;
     
     error:
@@ -72,18 +83,26 @@ DSocket* d_socket_connect_by_ip(char* ip,int port,DError** error) {
 
 void d_socket_close(DSocket* socket){
     if ( socket->socket_desc > 0){
+
+
         shutdown(socket->socket_desc,SHUT_RDWR);
+
         close(socket->socket_desc);   
     }
+
     free(socket);
         
 }
 
 void d_socket_send(DSocket* socket,void* buffer,size_t len,DError** error){
 
+#ifndef __WIN32__
     int result = send(socket->socket_desc,buffer,len,MSG_NOSIGNAL);
+#else
+    int result = send(socket->socket_desc,buffer,len,0);
+#endif
 
-    if ( result == -1){
+    if ( result == SOCKET_ERROR){
         if ( error )
             *error = DERROR("Error while sending data, %s",strerror(errno));
     }

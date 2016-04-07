@@ -2,6 +2,7 @@
 #include "d_types.h"
 #include <malloc.h>
 #include <stdio.h>
+#include "d_logger.h"
 
 static boolean g_exit_on_malloc_failure = TRUE;
 
@@ -55,6 +56,10 @@ void d_mpool_free(){
 
 
 void d_memory_print_memusage(){
+#ifndef __WIN32__
     struct mallinfo info =  mallinfo();
-    printf("used memory %.2f Mo, %.2f Mo with mmap\n",info.arena / 1000000.0f,info.hblkhd / 1000000.0f);
+    DLOGI("used memory %.2f Mo, %.2f Mo with mmap\n",info.arena / 1000000.0f,info.hblkhd / 1000000.0f);
+#else
+    DLOGV("function mallinfo() not available on this platform");
+#endif
 }
