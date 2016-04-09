@@ -4,4 +4,22 @@
         <activeConfTypeElem>3</activeConfTypeElem>
         <activeConfIndexElem>0</activeConfIndexElem>
     </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_memory.c</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_socket.c</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_error.c</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_socket.h</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_lib.h</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_list.c</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_memory.h</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_img.h</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_logger.h</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_img.c</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_types.h</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_error.h</file>
+            <file>file:/C:/Users/Denis%20Rolland/Documents/NetBeansProjects/DLib/d_logger.c</file>
+        </group>
+    </open-files>
 </project-private>

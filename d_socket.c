@@ -3,7 +3,7 @@
 
 #include <sys/types.h>
 
-#ifndef __WIN32__
+#if !defined(__WIN32__) || defined(__CYGWIN__) 
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
@@ -11,14 +11,8 @@
 #define SOCKET_ERROR -1
 
 #else
-
-
 #include <winsock2.h>
 #include <ws2tcpip.h>
-
-#define SHUT_RDWR SD_BOTH
-
-
 #pragma comment(lib, "Ws2_32.lib")
 
 #endif
@@ -33,77 +27,145 @@
 #endif
 
 typedef struct _d_socket {
-  int socket_desc; // socket descriptor  
-    
+    int socket_desc; // socket descriptor  
+
 } DSocket;
 
-/* TODO Errocr checking for Windows WSA function */
-DSocket* d_socket_connect_by_ip(char* ip,int port,DError** error) {
 
-    
+#if !defined(__WIN32__)
+DSocket* d_socket_connect_by_ip(char* ip, int port, DError** error) {
+
+    DSocket* new_socket = d_malloc(sizeof (DSocket));
+
+
     struct sockaddr_in sock_adress;
-    
-    if ( (sock_adress.sin_addr.s_addr = inet_addr(ip)) == -1){
-        if ( error)
-            *error = DERROR("IP adress %s is invalid",ip);
+
+    if ((sock_adress.sin_addr.s_addr = inet_addr(ip)) == -1) {
+        if (error)
+            *error = DERROR("IP adress %s is invalid", ip);
         goto error;
     };
-    
+
     sock_adress.sin_family = AF_INET; /* Protocol IP */
-    sock_adress.sin_port = htons(port); 
-    
-    DSocket* new_socket = d_malloc(sizeof(DSocket));
-    
-    new_socket->socket_desc = socket(AF_INET,SOCK_STREAM,0);
-    
-/*  Not available on Linux, but kept there in case it would be needed by some other OSs/Platforms
-    int set = 1;
-    setsockopt(new_socket->socket_desc, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int);
-*/
-    
-    if ( new_socket->socket_desc == SOCKET_ERROR){
-        if ( error)
-            *error = DERROR("Cant create socket, %s",strerror(errno));
+    sock_adress.sin_port = htons(port);
+
+    new_socket->socket_desc = socket(AF_INET, SOCK_STREAM, 0);
+
+
+    if (new_socket->socket_desc == INVALID_SOCKET) {
+        if (error)
+            *error = DERROR("Cant create socket, %s", strerror(errno));
         goto error;
     }
-    
-    if( connect(new_socket->socket_desc, (const struct sockaddr*)&sock_adress, sizeof(sock_adress)) == SOCKET_ERROR){
-        if ( error )
-            *error = DERROR("Connection to %s:%d failed, %s",ip,port,strerror(errno));
+
+    if (connect(new_socket->socket_desc, (const struct sockaddr*) &sock_adress, sizeof (sock_adress)) == SOCKET_ERROR) {
+        if (error)
+            *error = DERROR("Connection to %s:%d failed, %s", ip, port, strerror(errno));
         goto error;
     }
-    
+
     return new_socket;
-    
-    error:
-    if ( new_socket ) d_socket_close(new_socket);
+
+error:
+    if (new_socket) d_socket_close(new_socket);
     return NULL;
-        
+
 }
 
-void d_socket_close(DSocket* socket){
-    if ( socket->socket_desc > 0){
 
 
-        shutdown(socket->socket_desc,SHUT_RDWR);
+void d_socket_close(DSocket* socket) {
+    if (socket->socket_desc > 0) {
 
-        close(socket->socket_desc);   
+
+        shutdown(socket->socket_desc, SHUT_RDWR);
+
+        close(socket->socket_desc);
     }
 
     free(socket);
-        
+
 }
 
-void d_socket_send(DSocket* socket,void* buffer,size_t len,DError** error){
+void d_socket_send(DSocket* socket, void* buffer, size_t len, DError** error) {
 
-#ifndef __WIN32__
-    int result = send(socket->socket_desc,buffer,len,MSG_NOSIGNAL);
-#else
-    int result = send(socket->socket_desc,buffer,len,0);
-#endif
+    int result = send(socket->socket_desc, buffer, len, MSG_NOSIGNAL);
 
-    if ( result == SOCKET_ERROR){
-        if ( error )
-            *error = DERROR("Error while sending data, %s",strerror(errno));
+
+    if (result == SOCKET_ERROR) {
+        if (error)
+            *error = DERROR("Error while sending data, %s", strerror(errno));
     }
 }
+
+#else
+
+
+DSocket* d_socket_connect_by_ip(char* ip, int port, DError** error) {
+
+    int iResult;
+    WSADATA wsaData;
+    // Initialize Winsock
+    iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
+    if (iResult != 0) {
+        printf("WSAStartup failed: %d\n", iResult);
+        return NULL;
+    }
+
+    DSocket* new_socket = d_malloc(sizeof (DSocket));
+
+
+    struct sockaddr_in sock_adress;
+
+    if ((sock_adress.sin_addr.s_addr = inet_addr(ip)) == -1) {
+        if (error)
+            *error = DERROR("IP adress %s is invalid", ip);
+        goto error;
+    };
+
+    sock_adress.sin_family = AF_INET; /* Protocol IP */
+    sock_adress.sin_port = htons(port);
+
+    new_socket->socket_desc = socket(AF_INET, SOCK_STREAM, 0);
+
+
+    if (new_socket->socket_desc == INVALID_SOCKET) {
+        if (error)
+            *error = DERROR("Cant create socket, %s", strerror(errno));
+        goto error;
+    }
+
+    if (connect(new_socket->socket_desc, (const struct sockaddr*) &sock_adress, sizeof (sock_adress)) == SOCKET_ERROR) {
+        if (error)
+            *error = DERROR("Connection to %s:%d failed, %s", ip, port, strerror(errno));
+        goto error;
+    }
+
+    return new_socket;
+
+error:
+    if (new_socket) d_socket_close(new_socket);
+    return NULL;
+
+}
+
+void d_socket_close(DSocket* socket) {
+    if (socket->socket_desc > 0) {
+        shutdown(socket->socket_desc, SD_BOTH);
+        closesocket(socket->socket_desc);
+    }
+    free(socket);
+}
+
+
+void d_socket_send(DSocket* socket, void* buffer, size_t len, DError** error) {
+
+    int result = send(socket->socket_desc, buffer, len, 0);
+
+    if (result == SOCKET_ERROR) {
+        if (error)
+            *error = DERROR("Error while sending data, %s", strerror(errno));
+    }
+}
+
+#endif
