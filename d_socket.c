@@ -3,7 +3,7 @@
 
 #include <sys/types.h>
 
-#if !defined(__WIN32__) || defined(__CYGWIN__) 
+#if !defined(__WIN32__) 
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
