@@ -6,6 +6,7 @@
 #include "d_logger.h"
 #include <stdarg.h>
 #include "d_string.h"
+#include <assert.h>
 
 DError* d_error_new(int level,const char* file,int line, const char* msg,...){
     
@@ -40,8 +41,10 @@ DError* d_error_new(int level,const char* file,int line, const char* msg,...){
 }
 
 
-void d_error_free(DError* error){
-    if ( error->file ) free(error->file);
-    if ( error->msg ) free(error->msg);
-    free(error);    
+void d_error_free(DError** error){
+    assert(*error != NULL);
+    if ( (*error)->file ) free((*error)->file);
+    if ( (*error)->msg ) free((*error)->msg);
+    free(*error); 
+    *error = NULL;
 }
