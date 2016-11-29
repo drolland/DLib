@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW64-Windows
-CND_DLIB_EXT=dll
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -44,7 +44,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/d_socket.o \
 	${OBJECTDIR}/d_string.o \
 	${OBJECTDIR}/d_time.o \
-	${OBJECTDIR}/d_tools.o
+	${OBJECTDIR}/d_tools.o \
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -65,13 +66,11 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdlib.a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dlib
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdlib.a: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dlib: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdlib.a
-	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdlib.a ${OBJECTFILES} 
-	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdlib.a
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dlib ${OBJECTFILES} ${LDLIBSOPTIONS} -lm
 
 ${OBJECTDIR}/d_error.o: d_error.c 
 	${MKDIR} -p ${OBJECTDIR}
@@ -123,13 +122,18 @@ ${OBJECTDIR}/d_tools.o: d_tools.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -D_POSIX_C_SOURCE\ =\ 199309L -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_tools.o d_tools.c
 
+${OBJECTDIR}/main.o: main.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -D_POSIX_C_SOURCE\ =\ 199309L -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
 # Subprojects
 .build-subprojects:
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdlib.a
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/dlib
 
 # Subprojects
 .clean-subprojects:

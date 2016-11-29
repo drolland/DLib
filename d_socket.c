@@ -52,7 +52,7 @@ DSocket* d_socket_connect_by_ip(char* ip, int port, DError** error) {
     new_socket->socket_desc = socket(AF_INET, SOCK_STREAM, 0);
 
 
-    if (new_socket->socket_desc == INVALID_SOCKET) {
+    if (new_socket->socket_desc == 0) {
         if (error)
             *error = DERROR("Cant create socket, %s", strerror(errno));
         goto error;

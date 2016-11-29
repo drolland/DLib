@@ -1,5 +1,5 @@
 
-#define NO_DEBUG_LOG
+//#define NO_DEBUG_LOG
 
 
 #include <stdint.h>
@@ -9,6 +9,7 @@
 #include <errno.h>
 #include <assert.h>
 #include <math.h>
+#include <bits/stdio2.h>
 
 #include "d_img.h"
 #include "d_memory.h"
@@ -48,6 +49,7 @@ enum {
     BI_BITFIELD = 3,
     BI_ALPHABITFIELDS = 6
 };
+
 
 DImg* d_img_new_image(int width, int height, int color_format) {
     DImg* image = d_malloc(sizeof (DImg));

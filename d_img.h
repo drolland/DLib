@@ -4,7 +4,9 @@
 
 enum {
     DIMG_COLOR_FORMAT_RGB = 3,
-    DIMG_COLOR_FORMAT_RGBA = 4
+    DIMG_COLOR_FORMAT_RGBA = 4,
+    DIMG_COLOR_FORMAT_RGB_FLOAT = 12,
+    DIMG_COLOR_FORMAT_RGBA_FLOAT = 16
 };
 
 typedef struct _dimg {
