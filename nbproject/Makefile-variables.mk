@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
 CND_PACKAGE_NAME_Debug=dlib.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/dlib.tar
 # Release configuration
-CND_PLATFORM_Release=GNU-Linux
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
+CND_PLATFORM_Release=CLang-Linux
+CND_ARTIFACT_DIR_Release=dist/Release/CLang-Linux
 CND_ARTIFACT_NAME_Release=libdlib.a
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/libdlib.a
-CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
+CND_ARTIFACT_PATH_Release=dist/Release/CLang-Linux/libdlib.a
+CND_PACKAGE_DIR_Release=dist/Release/CLang-Linux/package
 CND_PACKAGE_NAME_Release=DLib.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/DLib.tar
+CND_PACKAGE_PATH_Release=dist/Release/CLang-Linux/package/DLib.tar
 #
 # include compiler specific variables
 #

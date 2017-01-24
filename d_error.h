@@ -17,7 +17,7 @@ typedef struct _derror {
 
 DError* d_error_new(int level,const char* file,int line,const char* msg,...);
 
-void d_error_free(DError* error);
+void d_error_free(DError** error);
 
 /* Fast Macro*/
 
