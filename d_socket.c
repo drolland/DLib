@@ -3,7 +3,7 @@
 
 #include <sys/types.h>
 
-#if !defined(__WIN32__) 
+#ifndef _WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
@@ -77,9 +77,9 @@ error:
 void d_socket_close(DSocket* socket) {
     if (socket->socket_desc > 0) {
 
-
+#if __WIN32__ == 1
         shutdown(socket->socket_desc, SHUT_RDWR);
-
+#endif
         close(socket->socket_desc);
     }
 
@@ -89,7 +89,7 @@ void d_socket_close(DSocket* socket) {
 
 void d_socket_send(DSocket* socket, void* buffer, size_t len, DError** error) {
 
-    int result = send(socket->socket_desc, buffer, len, MSG_NOSIGNAL);
+    int result = send(socket->socket_desc, buffer, len, 0);
 
 
     if (result == SOCKET_ERROR) {

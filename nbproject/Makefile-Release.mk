@@ -77,57 +77,57 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libdlib.a: ${OBJECTFILES}
 ${OBJECTDIR}/d_error.o: d_error.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_error.o d_error.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_error.o d_error.c
 
 ${OBJECTDIR}/d_img.o: d_img.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_img.o d_img.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_img.o d_img.c
 
 ${OBJECTDIR}/d_list.o: d_list.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_list.o d_list.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_list.o d_list.c
 
 ${OBJECTDIR}/d_logger.o: d_logger.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_logger.o d_logger.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_logger.o d_logger.c
 
 ${OBJECTDIR}/d_memory.o: d_memory.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_memory.o d_memory.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_memory.o d_memory.c
 
 ${OBJECTDIR}/d_ml.o: d_ml.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_ml.o d_ml.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_ml.o d_ml.c
 
 ${OBJECTDIR}/d_socket.o: d_socket.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_socket.o d_socket.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_socket.o d_socket.c
 
 ${OBJECTDIR}/d_string.o: d_string.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_string.o d_string.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_string.o d_string.c
 
 ${OBJECTDIR}/d_time.o: d_time.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_time.o d_time.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_time.o d_time.c
 
 ${OBJECTDIR}/d_tools.o: d_tools.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_tools.o d_tools.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/d_tools.o d_tools.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -D199309L -D= -D_POSIX_C_SOURCE -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
 
 # Subprojects
 .build-subprojects:

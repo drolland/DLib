@@ -20,7 +20,6 @@ typedef struct _dimg {
 typedef struct _dkernel {
     float* data;
     int color_format;
-    int nb_colors;
     int pixel_width;
     int pixel_height;
 } DKernel;

@@ -53,7 +53,7 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>GNU|GNU</compilerSet>
+        <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -65,7 +65,7 @@
           </preprocessorList>
         </cTool>
         <linkerTool>
-          <commandLine>-lm</commandLine>
+          <commandLine>-lm -lwindow</commandLine>
         </linkerTool>
       </compileType>
       <item path="d_error.c" ex="false" tool="0" flavor2="0">
@@ -127,11 +127,6 @@
         <cTool>
           <developmentMode>5</developmentMode>
           <standard>10</standard>
-          <preprocessorList>
-            <Elem>199309L</Elem>
-            <Elem>=</Elem>
-            <Elem>_POSIX_C_SOURCE</Elem>
-          </preprocessorList>
           <useLinkerLibraries>false</useLinkerLibraries>
         </cTool>
         <ccTool>

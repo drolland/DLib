@@ -56,7 +56,7 @@ void d_mpool_free(){
 
 
 void d_memory_print_memusage(){
-#ifndef __WIN32__
+#if __WIN32__ == 1
     struct mallinfo info =  mallinfo();
     DLOGI("used memory %.2f Mo, %.2f Mo with mmap\n",info.arena / 1000000.0f,info.hblkhd / 1000000.0f);
 #else
